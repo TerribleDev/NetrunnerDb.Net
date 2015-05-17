@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace NetrunnerDb.Net
+namespace NetrunnerDb.Net.Responses
 {
     public class Cards : IRequest
     {
