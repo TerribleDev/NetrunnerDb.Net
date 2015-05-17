@@ -36,6 +36,10 @@ namespace NetrunnerDb.Net
 
         public string EndPoint(string parameter = "")
         {
+            if (!string.IsNullOrWhiteSpace(parameter))
+            {
+                throw new ArgumentOutOfRangeException("parameter", "Sets does not have a URL parameter");
+            }
             return "/api/sets/";
         }
     }

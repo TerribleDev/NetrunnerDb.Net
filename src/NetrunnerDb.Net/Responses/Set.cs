@@ -108,6 +108,11 @@ namespace NetrunnerDb.Net
 
         public string EndPoint(string parameter = "")
         {
+            //we should be passed an actual param
+            if (string.IsNullOrWhiteSpace(parameter))
+            {
+                throw new ArgumentNullException("parameter");
+            }
             return string.Format("/api/set/{0}", parameter);
         }
     }

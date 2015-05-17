@@ -117,6 +117,11 @@ namespace NetrunnerDb.Net
 
         public string EndPoint(string parameter = "")
         {
+            //this endpoint should not be passed a parameter
+            if (!string.IsNullOrWhiteSpace(parameter))
+            {
+                throw new ArgumentOutOfRangeException("parameter", "Cards does not have any parameters for the endpoint");
+            }
             return "/api/cards/";
         }
     }
