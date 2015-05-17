@@ -7,3 +7,5 @@ build:
   publish_nuget_symbols: true
   include_nuget_references: true
   verbosity: normal
+before_build:
+  - nuget restore
