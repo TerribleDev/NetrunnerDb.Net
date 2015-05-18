@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Responses\BaseRequest.cs" />
     <Compile Include="Responses\Cards.cs" />
+    <Compile Include="Responses\Decklist.cs" />
     <Compile Include="Responses\IRequest.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\OneCard.cs" />
     <Compile Include="Responses\Set.cs" />
     <Compile Include="Responses\Sets.cs" />
   </ItemGroup>

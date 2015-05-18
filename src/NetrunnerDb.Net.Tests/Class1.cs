@@ -15,7 +15,12 @@ namespace NetrunnerDb.Net.Tests
         [Ignore]
         public void Tst()
         {
-            var cool = new Repository().GetRequest<Cards>("tsb");
+           // var t = new BaseRequest();
+            var cool = new Repository().GetRequest<Decklist>("20850");
+            foreach (var x in cool[0].Cards)
+            {
+                Console.WriteLine(new Repository().GetRequest<OneCard>(x.Key)[0].Title + " x " + x.Value);
+            }
         }
     }
 }

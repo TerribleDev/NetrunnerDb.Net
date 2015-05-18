@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
 {
-    public class Sets : IRequest
+    public class Sets : BaseRequest
     {
 
         [JsonProperty("name")]
@@ -30,7 +30,7 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("url")]
         public string Url { get; set; }
 
-        public string EndPoint(string parameter = "")
+        public override string EndPoint(string parameter = "")
         {
             if (!string.IsNullOrWhiteSpace(parameter))
             {

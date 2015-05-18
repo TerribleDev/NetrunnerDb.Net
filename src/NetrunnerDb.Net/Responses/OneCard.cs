@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
 {
-    public class Cards : BaseRequest
+    public class OneCard : BaseRequest
     {
 
         [JsonProperty("last-modified")]
@@ -30,8 +34,11 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("text")]
         public string Text { get; set; }
 
-        [JsonProperty("baselink")]
-        public int Baselink { get; set; }
+        [JsonProperty("advancementcost")]
+        public int Advancementcost { get; set; }
+
+        [JsonProperty("agendapoints")]
+        public int Agendapoints { get; set; }
 
         [JsonProperty("faction")]
         public string Faction { get; set; }
@@ -42,17 +49,8 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("faction_letter")]
         public string FactionLetter { get; set; }
 
-        [JsonProperty("flavor")]
-        public string Flavor { get; set; }
-
         [JsonProperty("illustrator")]
         public string Illustrator { get; set; }
-
-        [JsonProperty("influencelimit")]
-        public int Influencelimit { get; set; }
-
-        [JsonProperty("minimumdecksize")]
-        public int Minimumdecksize { get; set; }
 
         [JsonProperty("number")]
         public int Number { get; set; }
@@ -90,35 +88,14 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("imagesrc")]
         public string Imagesrc { get; set; }
 
-        [JsonProperty("cost")]
-        public int? Cost { get; set; }
-
-        [JsonProperty("factioncost")]
-        public int? Factioncost { get; set; }
-
-        [JsonProperty("memoryunits")]
-        public int? Memoryunits { get; set; }
-
-        [JsonProperty("strength")]
-        public int? Strength { get; set; }
-
-        [JsonProperty("advancementcost")]
-        public int? Advancementcost { get; set; }
-
-        [JsonProperty("agendapoints")]
-        public int? Agendapoints { get; set; }
-
-        [JsonProperty("trash")]
-        public int? Trash { get; set; }
-
         public override string EndPoint(string parameter = "")
         {
-            //this endpoint should not be passed a parameter
-            if (!string.IsNullOrWhiteSpace(parameter))
+            //we should be passed an actual param
+            if (string.IsNullOrWhiteSpace(parameter))
             {
-                throw new ArgumentOutOfRangeException("parameter", "Cards does not have any parameters for the endpoint");
+                throw new ArgumentNullException("parameter");
             }
-            return "/api/cards/";
+            return string.Format("/api/card/{0}", parameter);
         }
     }
 
