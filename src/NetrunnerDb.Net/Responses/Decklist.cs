@@ -26,7 +26,7 @@ namespace NetrunnerDb.Net.Responses
             public string Username { get; set; }
 
             [JsonProperty("cards")]
-            public Dictionary<string, string> Cards { get; set; }
+            public IDictionary<string, string> Cards { get; set; }
 
 
         public override bool IsArray { get { return false; }}

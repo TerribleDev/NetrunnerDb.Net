@@ -50,6 +50,7 @@
     <Compile Include="Responses\BaseRequest.cs" />
     <Compile Include="Responses\Cards.cs" />
     <Compile Include="Responses\Decklist.cs" />
+    <Compile Include="Responses\DecklistByDay.cs" />
     <Compile Include="Responses\IRequest.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
