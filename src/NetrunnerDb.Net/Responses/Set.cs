@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
 {
-    public class Set : IRequest
+    public class Set : BaseRequest
     {
 
         [JsonProperty("last-modified")]
@@ -102,7 +102,7 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("trash")]
         public int? Trash { get; set; }
 
-        public string EndPoint(string parameter = "")
+        public override string EndPoint(string parameter = "")
         {
             //we should be passed an actual param
             if (string.IsNullOrWhiteSpace(parameter))

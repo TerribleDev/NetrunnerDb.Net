@@ -27,7 +27,12 @@ namespace NetrunnerDb.Net
             var client = new RestClient("http://netrunnerdb.com");
             var response = client.Execute(request);
             if (response.StatusCode != HttpStatusCode.OK) return null;
-            return JsonConvert.DeserializeObject<IList<TResult>>(response.Content);
+            if (s.IsArray)
+            {
+                return JsonConvert.DeserializeObject<IList<TResult>>(response.Content);
+            }
+            var t = new List<TResult> {JsonConvert.DeserializeObject<TResult>(response.Content)};
+            return t;
         }
         /// <summary>
         /// /api/sets/ returns data about all the sets in the database.
