@@ -14,7 +14,7 @@ namespace NetrunnerDb.Net
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
         /// <param name="parameter">The URL parameter, not needed for classes that are plural like Sets</param>
-        /// <returns></returns>
+        /// <returns>Returns null if nothing is found</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FormatException"></exception>
@@ -38,7 +38,7 @@ namespace NetrunnerDb.Net
         /// <summary>
         /// /api/sets/ returns data about all the sets in the database.
         /// </summary>01001 
-        /// <returns></returns>
+        /// <returns>Returns null if nothing is found</returns>
         /// <exception cref="FormatException"></exception>
         public IList<Sets> GetSets()
         {
@@ -59,10 +59,7 @@ namespace NetrunnerDb.Net
         /// <summary>
         /// /api/cards/ returns data about all the cards in the database.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="FormatException"></exception>
+        /// <returns>Returns null if nothing is found</returns>
         public IList<Cards> GetCards()
         {
             return GetRequest<Cards>();
@@ -71,7 +68,7 @@ namespace NetrunnerDb.Net
         /// <summary>
         /// /api/card/{code} returns data about all the cards in the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns null if nothing is found</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FormatException"></exception>
