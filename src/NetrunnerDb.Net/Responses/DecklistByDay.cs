@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
 {
     public class DecklistByDate : BaseRequest
     {
+        public DecklistByDate() { }
 
+        public DecklistByDate(DateTime endpoint)
+        {
+            Endpoint = endpoint;
+        }
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -28,9 +30,24 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("cards")]
         public IDictionary<string,string> Cards { get; set; }
 
+        private DateTime? Endpoint { get; set; }
+
         public override string EndPoint(string parameter = "")
         {
-            throw new NotImplementedException();
+            if (Endpoint.HasValue)
+            {
+                return string.Format("/api/decklists/by_date/{0}", Endpoint.Value.ToString("yy-MM-dd")); 
+            }
+            if (string.IsNullOrWhiteSpace(parameter))
+            {
+                throw new ArgumentNullException("parameter");
+            }
+            DateTime dateTime;
+            if (DateTime.TryParse(parameter, out dateTime))
+            {
+                return string.Format("/api/decklists/by_date/{0}", dateTime.ToString("yy-MM-dd"));
+            }
+            throw new FormatException(string.Format("{0} is not a valid date format"));
         }
     }
 }
