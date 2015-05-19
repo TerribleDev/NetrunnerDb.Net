@@ -17,6 +17,7 @@ namespace NetrunnerDb.Net
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
         public IList<TResult> GetRequest<TResult>(string parameter = "")
             where TResult : class, IRequest, new()
         {
@@ -38,6 +39,7 @@ namespace NetrunnerDb.Net
         /// /api/sets/ returns data about all the sets in the database.
         /// </summary>01001 
         /// <returns></returns>
+        /// <exception cref="FormatException"></exception>
         public IList<Sets> GetSets()
         {
             return GetRequest<Sets>();
@@ -47,6 +49,9 @@ namespace NetrunnerDb.Net
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
         public IList<Sets> GetSet(string code)
         {
             return GetRequest<Sets>(code);
@@ -55,6 +60,9 @@ namespace NetrunnerDb.Net
         /// /api/cards/ returns data about all the cards in the database.
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
         public IList<Cards> GetCards()
         {
             return GetRequest<Cards>();
@@ -64,9 +72,12 @@ namespace NetrunnerDb.Net
         /// /api/card/{code} returns data about all the cards in the database.
         /// </summary>
         /// <returns></returns>
-        public IList<OneCard> GetCard()
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
+        public IList<OneCard> GetCard(string code)
         {
-            return GetRequest<OneCard>();
+            return GetRequest<OneCard>(code);
         }
     }
 }
