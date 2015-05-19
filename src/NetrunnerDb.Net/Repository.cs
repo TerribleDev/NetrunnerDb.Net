@@ -36,7 +36,7 @@ namespace NetrunnerDb.Net
         }
         /// <summary>
         /// /api/sets/ returns data about all the sets in the database.
-        /// </summary>
+        /// </summary>01001 
         /// <returns></returns>
         public IList<Sets> GetSets()
         {
@@ -58,6 +58,15 @@ namespace NetrunnerDb.Net
         public IList<Cards> GetCards()
         {
             return GetRequest<Cards>();
+        }
+
+        /// <summary>
+        /// /api/card/{code} returns data about all the cards in the database.
+        /// </summary>
+        /// <returns></returns>
+        public IList<OneCard> GetCard()
+        {
+            return GetRequest<OneCard>();
         }
     }
 }

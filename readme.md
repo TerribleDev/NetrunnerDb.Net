@@ -2,4 +2,22 @@
 
 ## What is this?
 
-A simple API wrapper over the netrunner db. Still a WIP
+A simple API wrapper over the netrunner db.
+
+
+## How does this work?
+
+To put it simply
+
+
+```
+new Repository().GetRequest<Cards>()
+
+OR
+
+new Repository().GetCards()
+
+new Repository().GetRequest<Card>(01001)
+
+
+```
