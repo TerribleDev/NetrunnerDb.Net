@@ -9,3 +9,11 @@ build:
   verbosity: normal
 before_build:
   - nuget restore
+
+deploy:
+- provider: NuGet
+  server:
+  api_key:
+    secure: fGNwXOtebe3kxu5SrB90CrbaCxVxuzuCQh3Ipcc0G/3cutoNZf7d7G6AaQ4fRv2l
+  on:
+    branch: master
