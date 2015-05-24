@@ -18,6 +18,6 @@ var result = new Repository().GetSets();
 var result = new Repository().GetSet("tsb (set code, all set codes can be found by querying GetCards())");
 var result new Repository().GetDecklist("Decklist ID, can be found in the URL of the decklist")
 var targetDate = new DateTime(2014, 01, 01);
-new Repository().GetDecklistForDay(targetDate)
+var result = new Repository().GetDecklistForDay(targetDate)
 
 ```
