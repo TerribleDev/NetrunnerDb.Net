@@ -23,4 +23,4 @@ deploy:
   api_key:
     secure: fGNwXOtebe3kxu5SrB90CrbaCxVxuzuCQh3Ipcc0G/3cutoNZf7d7G6AaQ4fRv2l
   on:
-    branch: master
+    branch: release
