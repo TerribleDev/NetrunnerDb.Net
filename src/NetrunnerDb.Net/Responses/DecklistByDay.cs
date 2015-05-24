@@ -9,10 +9,6 @@ namespace NetrunnerDb.Net.Responses
     {
         public DecklistByDate() { }
 
-        public DecklistByDate(DateTime endpoint)
-        {
-            Endpoint = endpoint;
-        }
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -31,14 +27,8 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("cards")]
         public IDictionary<string,string> Cards { get; set; }
 
-        private DateTime? Endpoint { get; set; }
-
         public override string EndPoint(string parameter = "")
         {
-            if (Endpoint.HasValue)
-            {
-                return string.Format("/api/decklists/by_date/{0}", Endpoint.Value.ToString("yyyy-MM-dd")); 
-            }
             if (string.IsNullOrWhiteSpace(parameter))
             {
                 throw new ArgumentNullException("parameter");

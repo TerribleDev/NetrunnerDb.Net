@@ -31,13 +31,13 @@ namespace NetrunnerDb.Net.AcceptanceTests
         [Test]
         public void Decklist()
         {
-            Assert.AreEqual(20866, new Repository().GetRequest<Decklist>("20866").First().Id);
+            Assert.AreEqual(20866, new Repository().GetDecklist("20866").First().Id);
         }
         [Test]
         public void DecklistByDate()
         {
             var targetDate = new DateTime(2014, 01, 01);
-            Assert.IsTrue(new Repository().GetRequest<DecklistByDate>(targetDate.ToString("MM/dd/yyyy")).All(a =>
+            Assert.IsTrue(new Repository().GetDecklistForDay(targetDate).All(a =>
             {
                 var parseDate = DateTime.Parse(a.Creation);
                 return (parseDate >= targetDate && parseDate <= parseDate.AddDays(1).AddMinutes(-1));

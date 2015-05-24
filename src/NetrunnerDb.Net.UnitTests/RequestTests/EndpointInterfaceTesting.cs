@@ -20,16 +20,6 @@ namespace NetrunnerDb.Net.UnitTests.RequestTests
         }
 
         [Test]
-        public void TestDecklistEndpointDateTimeOverride()
-        {
-            var mockedDatetime = new DateTime(2014, 1, 1);
-            var decklistByDate = new DecklistByDate(mockedDatetime);
-            var decklistEndpoint = decklistByDate.EndPoint();
-            var date = decklistEndpoint.Split('/').Last();
-            Assert.AreEqual(date, "2014-01-01");
-        }
-
-        [Test]
         public void TestDecklistEndpoint()
         {
             Assert.Throws<ArgumentNullException>(() => new DecklistByDate().EndPoint(String.Empty));

@@ -77,5 +77,23 @@ namespace NetrunnerDb.Net
         {
             return GetRequest<OneCard>(code);
         }
+        /// <summary>
+        /// Get a decklist by its id
+        /// </summary>
+        /// <param name="decklistId"></param>
+        /// <returns></returns>
+        public IList<Decklist> GetDecklist(string decklistId)
+        {
+            return GetRequest<Decklist>(decklistId);
+        }
+        /// <summary>
+        /// Get all decklists for one day
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public IList<DecklistByDate> GetDecklistForDay(DateTime date)
+        {
+            return GetRequest<DecklistByDate>(date.ToString("yyyy-MM-dd"));
+        }
     }
 }
