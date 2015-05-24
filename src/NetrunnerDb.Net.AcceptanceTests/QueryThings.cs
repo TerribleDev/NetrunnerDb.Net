@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using NetrunnerDb.Net.Responses;
 using NUnit.Framework;
 
 namespace NetrunnerDb.Net.AcceptanceTests
@@ -11,37 +10,83 @@ namespace NetrunnerDb.Net.AcceptanceTests
         [Test]
         public void OneCard()
         {
-            Assert.AreEqual(new Repository().GetCard("01001").First().Title, "Noise: Hacker Extraordinaire");
+            var oneCards = new Repository().GetCard("01001");
+            Assert.IsNotNull(oneCards);
+            Assert.AreEqual(oneCards.First().Title, "Noise: Hacker Extraordinaire");
         }
+
+        [Test]
+        public void OneCardInvalid()
+        {
+            var oneCards = new Repository().GetCard("w00tcard");
+            Assert.IsNull(oneCards);
+        }
+
         [Test]
         public void Cards()
         {
-            Assert.IsTrue(new Repository().GetCards().Count > 100);
+            var result = new Repository().GetCards();
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count > 100);
         }
+
         [Test]
         public void Set()
         {
-            Assert.IsTrue(new Repository().GetSet("tsb").Count > 10);
+            var sets = new Repository().GetSet("tsb");
+            Assert.IsNotNull(sets);
+            Assert.IsTrue(sets.Count > 10);
         }
+
+        [Test]
+        public void SetInvalid()
+        {
+            var set = new Repository().GetCard("I'm a set");
+            Assert.IsNull(set);
+        }
+
         [Test]
         public void Sets()
         {
-            Assert.IsTrue(new Repository().GetSets().Count > 10);
+            var setses = new Repository().GetSets();
+            Assert.IsNotNull(setses);
+            Assert.IsTrue(setses.Count > 10);
         }
+
         [Test]
         public void Decklist()
         {
-            Assert.AreEqual(20866, new Repository().GetDecklist("20866").First().Id);
+            var decklists = new Repository().GetDecklist("20866");
+            Assert.IsNotNull(decklists);
+            Assert.AreEqual(20866, decklists.First().Id);
         }
+
+        [Test]
+        public void DecklistInvalid()
+        {
+            var card = new Repository().GetCard("I'm a bad decklist test");
+            Assert.IsNull(card);
+        }
+
         [Test]
         public void DecklistByDate()
         {
             var targetDate = new DateTime(2014, 01, 01);
-            Assert.IsTrue(new Repository().GetDecklistForDay(targetDate).All(a =>
+            var decklistByDates = new Repository().GetDecklistForDay(targetDate);
+            Assert.IsNotNull(decklistByDates);
+            Assert.IsTrue(decklistByDates.All(a =>
             {
                 var parseDate = DateTime.Parse(a.Creation);
                 return (parseDate >= targetDate && parseDate <= parseDate.AddDays(1).AddMinutes(-1));
             }));
+        }
+
+        [Test]
+        public void DecklistByDateInvalid()
+        {
+            var targetDate = new DateTime(1999,01,01);
+            var decklistByDates = new Repository().GetDecklistForDay(targetDate);
+            Assert.IsEmpty(decklistByDates);
         }
     }
 }
