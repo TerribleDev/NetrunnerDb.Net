@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NetrunnerDb.Net.Responses
+﻿namespace NetrunnerDb.Net.Responses
 {
     public abstract class BaseRequest : IRequest
     {

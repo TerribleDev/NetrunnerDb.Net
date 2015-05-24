@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
 {
+
     public class DecklistByDate : BaseRequest
     {
         public DecklistByDate() { }
@@ -36,7 +37,7 @@ namespace NetrunnerDb.Net.Responses
         {
             if (Endpoint.HasValue)
             {
-                return string.Format("/api/decklists/by_date/{0}", Endpoint.Value.ToString("yy-MM-dd")); 
+                return string.Format("/api/decklists/by_date/{0}", Endpoint.Value.ToString("yyyy-MM-dd")); 
             }
             if (string.IsNullOrWhiteSpace(parameter))
             {
@@ -45,7 +46,7 @@ namespace NetrunnerDb.Net.Responses
             DateTime dateTime;
             if (DateTime.TryParse(parameter, out dateTime))
             {
-                return string.Format("/api/decklists/by_date/{0}", dateTime.ToString("yy-MM-dd"));
+                return string.Format("/api/decklists/by_date/{0}", dateTime.ToString("yyyy-MM-dd"));
             }
             throw new FormatException(string.Format("{0} is not a valid date format"));
         }

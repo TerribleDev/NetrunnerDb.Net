@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NetrunnerDb.Net.Responses
@@ -93,7 +89,7 @@ namespace NetrunnerDb.Net.Responses
             //we should be passed an actual param
             if (string.IsNullOrWhiteSpace(parameter))
             {
-                throw new ArgumentNullException("parameter");
+                throw new ArgumentOutOfRangeException("parameter", "Endpoint OneCard requires a parameter");
             }
             return string.Format("/api/card/{0}", parameter);
         }

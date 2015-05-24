@@ -22,7 +22,8 @@ namespace NetrunnerDb.Net
             where TResult : class, IRequest, new()
         {
             var s = new TResult();
-            var request = new RestRequest(){
+            var request = new RestRequest
+            {
                 Resource = s.EndPoint(parameter)
             };
             var client = new RestClient("http://netrunnerdb.com");
@@ -52,9 +53,9 @@ namespace NetrunnerDb.Net
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FormatException"></exception>
-        public IList<Sets> GetSet(string code)
+        public IList<Set> GetSet(string code)
         {
-            return GetRequest<Sets>(code);
+            return GetRequest<Set>(code);
         }
         /// <summary>
         /// /api/cards/ returns data about all the cards in the database.

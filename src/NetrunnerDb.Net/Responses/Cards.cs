@@ -111,6 +111,12 @@ namespace NetrunnerDb.Net.Responses
         [JsonProperty("trash")]
         public int? Trash { get; set; }
 
+        /// <summary>
+        /// Configure Endpoint
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">parameter</exception>
         public override string EndPoint(string parameter = "")
         {
             //this endpoint should not be passed a parameter
