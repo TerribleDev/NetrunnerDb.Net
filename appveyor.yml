@@ -10,6 +10,7 @@ build:
   include_nuget_references: true
   verbosity: normal
 before_build:
+  - echo %APPVEYOR_BUILD_VERSION%
   - nuget restore
 assembly_info:
   patch: true
